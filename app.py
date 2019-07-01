@@ -46,6 +46,8 @@ def load_shards(path):
 
 
 
+
+
 def preprocessing(s):
     '''
 
@@ -72,22 +74,6 @@ def preprocessing(s):
     # cv2.imwrite("static/UPLOAD/test.png", res) # saving processed image
     print(padded_docs.shape)
     return padded_docs
-
-
-def read_glove(glove_path):
-    '''
-
-    :return:
-    '''
-    embeddings_index = dict()
-    f = open(glove_path, encoding='utf8')
-    for line in f:
-        values = line.split()
-        word = values[0]
-        coefs = np.asarray(values[1:], dtype='float32')
-        embeddings_index[word] = coefs
-    f.close()
-    return embeddings_index
 
 
 def preprocess_word(word):

@@ -5,26 +5,25 @@
     <meta charset="UTF-8">
     <title>TF JS example</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
-    <link rel="stylesheet" href="../static/frontend/styles.css">
+    <link rel="stylesheet" href="./style.css">
 
 </head>
 
 <body>
     <h1>Review Prediction</h1>
     <!--<h2>When you first time press predict it will take more time, for model to load</h2>-->
-    <main class="file-form" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+    <main class="file-form" style="display: flex; flex-direction: column; justify-content: center; align-items: center" id= "container">
         <!--<input type="file" id="file" multiple class="file-form__select-file">-->
         <!--<label for="file" class="file-form__select-file_label">Choose files</label>-->
         <p> <input id="formInput1">
-            <p> <button type="submit" class="file-form__button file-form__button_predict" id="predict">Predict</button>
-                <button type="submit" class="file-form__button file-form__button_clear" id="clear">Clear</button>
-                <span class="file-form__files" id="number-of-files"></span>
+            <!--<p> <button type="submit" class="file-form__button file-form__button_predict" id="predict">Predict</button>-->
+                <!--<button type="submit" class="file-form__button file-form__button_clear" id="clear">Clear</button>-->
+
             </p>
+        <span class="file-form__files" id="number-of-files"></span>
     </main>
     <div id="preview"></div>
     <script src="./main.js"></script>
-    <script>
-    </script>
 </body>
 
 </html>
