@@ -3,8 +3,7 @@ from flask import Flask, request, render_template, json, jsonify, send_from_dire
 import json
 # import cv2
 import pandas as pd
-import numpy as np
-import io
+import pickle
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from nltk.stem.porter import PorterStemmer
@@ -15,6 +14,7 @@ nltk.download('stopwords')
 use_stemmer=True
 porter_stemmer=PorterStemmer()
 stop_words=set(stopwords.words('english'))
+
 
 app = Flask(__name__)
 CORS(app)
@@ -55,15 +55,18 @@ def preprocessing(s):
     :return:
     '''
     # embeddings_index = read_glove('./Embeddings/glove.6B.100d.txt')
-    reviews = pd.read_csv('./data/processed_review_text_en.csv')
-    reviews['text_data'] = reviews['text_data'].apply(lambda x : str(x))
-    combined_docs = reviews['text_data'].values
-    # print(type(combined_docs))
-    t = Tokenizer()
-    t.fit_on_texts(texts=combined_docs)
-    tokenizer_json = t.to_json()
-    with io.open('tokenizer.json', 'w', encoding='utf-8') as f:
-        f.write(json.dumps(tokenizer_json, ensure_ascii=False))
+    # reviews = pd.read_csv('./data/processed_review_text_en.csv')
+    # reviews['text_data'] = reviews['text_data'].apply(lambda x : str(x))
+    # combined_docs = reviews['text_data'].values
+    # # print(type(combined_docs))
+    # t = Tokenizer()
+    # t.fit_on_texts(texts=combined_docs)
+    # saving
+    # with open('/Users/himanshusanjivjagtap/Desktop/App/tokenizer.pickle', 'wb') as handle:
+    #     pickle.dump(t, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # loading
+    with open('tokenizer.pickle', 'rb') as handle:
+        t = pickle.load(handle)
     print(s)
     processed_str = preprocess_desc(s)
     print(processed_str)
