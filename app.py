@@ -4,7 +4,6 @@ import json
 # import cv2
 import pandas as pd
 import pickle
-from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from nltk.stem.porter import PorterStemmer
 import re
